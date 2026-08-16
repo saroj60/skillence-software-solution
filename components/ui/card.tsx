@@ -5,11 +5,16 @@ interface CardProps {
     children: ReactNode;
     className?: string;
     hoverEffect?: boolean;
+    id?: string;
+    onClick?: () => void;
 }
 
-export function Card({ children, className, hoverEffect = true }: CardProps) {
+export function Card({ children, className, hoverEffect = true, id, onClick }: CardProps) {
     return (
-        <div className={cn(
+        <div
+            id={id}
+            onClick={onClick}
+            className={cn(
             "rounded-xl border border-white/10 bg-card p-4 md:p-6 shadow-xl backdrop-blur-sm",
             hoverEffect && "transition-all duration-300 hover:border-primary/50 hover:shadow-primary/10 hover:-translate-y-1",
             className
